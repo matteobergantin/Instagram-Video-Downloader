@@ -74,18 +74,6 @@ URL.createObjectURL = function(media_src, ...other) {
     return URL._createObjectURL(media_src, ...other)
 }
 
-function downloadFile(blob, filename) {
-    const a = document.createElement('a')
-    const url = URL._createObjectURL(blob)
-    a.setAttribute('href', url)
-    a.setAttribute('download', filename)
-    a.click()
-    window.setTimeout(() => {
-        URL.revokeObjectURL(url)
-        a.remove()
-    }, 1000)
-}
-
 const _routineID = window.setInterval(() => {
     if (!_endOfStreamReached || _popUpWindowShown) return;
     window.clearInterval(_routineID)
