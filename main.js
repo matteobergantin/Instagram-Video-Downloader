@@ -50,6 +50,7 @@ URL.createObjectURL = function(media_src, ...other) {
         media_src._endOfStream = media_src._endOfStream || media_src.endOfStream
         media_src.endOfStream = () => {
             _endOfStreamReached = true
+            window.setTimeout(mergeFilesAndDownload, 0)
             return media_src._endOfStream()
         }
 
@@ -74,9 +75,8 @@ URL.createObjectURL = function(media_src, ...other) {
     return URL._createObjectURL(media_src, ...other)
 }
 
-const _routineID = window.setInterval(() => {
+function mergeFilesAndDownload() {
     if (!_endOfStreamReached || _popUpWindowShown) return;
-    window.clearInterval(_routineID)
     const keys = Object.keys(_videoAndAudioData)
 
     // Joining video bits, and creating a URL
@@ -95,14 +95,15 @@ const _routineID = window.setInterval(() => {
                 View the author's Github page: https://github.com/matteobergantin
             -->
             <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 400px; height: 200px; background: #272727; z-index: 999999;">
-                <div style="position: absolute; top: 15px; right: 15px; font-size: 20pt; cursor: pointer; color: white;" onclick="this.parentElement.parentElement.remove()">&#10005;</div>
+                <div style="position: absolute; top: 15px; right: 15px; font-size: 20pt; cursor: pointer; color: white;" onclick="this.parentElement.parentElement.parentElement.remove()">&#10005;</div>
                 <a style="margin-top: 60px; position: fixed; width: fit-content; left: 50%; transform: translateX(-50%); font-family: Helvetica, sans-serif; color: white; font-size: 15pt;" download="video.mp4" href="${videoURL}">Click me to download the video file</a><br><br>
                 <a style="margin-top: 60px; position: fixed; width: fit-content; left: 50%; transform: translateX(-50%); font-family: Helvetica, sans-serif; color: white; font-size: 15pt;" download="audio.mp4" href="${audioURL}">Click me to download the audio file</a><br><br>
                 <p style="position: absolute; width: 100%; text-align: center; bottom: 10px; left: 0; font-family: Helvetica, sans-serif; color: white; font-size: 10pt;">Visit my Github page <a style="color: #00bc8c;" href="https://github.com/matteobergantin" target="_blank">here</a></p>
             </div>
         </div>`
-
-    body.innerHTML += code
+    const element = document.createElement('div')
+    element.innerHTML += code
+    body.appendChild(element)
     _popUpWindowShown = true
     console.log(_videoAndAudioData)
-}, 500)
+}
