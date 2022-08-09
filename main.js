@@ -93,13 +93,13 @@ function mergeFilesAndDownload() {
                 View the author's Github page: https://github.com/matteobergantin
             -->
             <div class="close-btn" style="position: absolute; top: 15px; right: 15px; font-size: 20pt; cursor: pointer; color: white;">&#10005;</div>
-            <a style="margin-top: 60px; position: fixed; width: fit-content; left: 50%; transform: translateX(-50%); font-family: Helvetica, sans-serif; color: white; font-size: 15pt;" download="video.mp4" href="${videoURL}">Click me to download the video file</a><br><br>
-            <a style="margin-top: 60px; position: fixed; width: fit-content; left: 50%; transform: translateX(-50%); font-family: Helvetica, sans-serif; color: white; font-size: 15pt;" download="audio.mp4" href="${audioURL}">Click me to download the audio file</a><br><br>
+            <a style="white-space: nowrap; position: fixed; margin-top: 60px; width: fit-content; left: 50%; transform: translateX(-50%); font-family: Helvetica, sans-serif; color: white; font-size: 15pt;" download="video.mp4" href="${videoURL}">Click me to download the video file</a><br><br>
+            <a style="white-space: nowrap; position: fixed; margin-top: 60px; width: fit-content; left: 50%; transform: translateX(-50%); font-family: Helvetica, sans-serif; color: white; font-size: 15pt;" download="audio.mp4" href="${audioURL}">Click me to download the audio file</a><br><br>
             <p style="position: absolute; width: 100%; text-align: center; bottom: 10px; left: 0; font-family: Helvetica, sans-serif; color: white; font-size: 10pt;">Visit my Github page <a style="color: #00bc8c;" href="https://github.com/matteobergantin" target="_blank">here</a></p>
         </div>`
 
     const wrapperElement = document.createElement('div')
-    wrapperElement.setAttribute('style', 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6);')
+    wrapperElement.setAttribute('style', 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6);')
     wrapperElement.innerHTML = code
     const closeBtn = wrapperElement.querySelector('div.close-btn')
 
