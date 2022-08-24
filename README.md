@@ -2,6 +2,12 @@
 
 This simple script allows anyone to download video and audio files from Instagram.
 
+## Update
+
+I know create an extension to simplify the injection of the script.
+
+For more information visit [this link](https://github.com/matteobergantin/Instagram-Video-Downloader-Extension)
+
 ## Usage:
 
 Simply copy-paste the code contained in `main.js` inside the developer console.
