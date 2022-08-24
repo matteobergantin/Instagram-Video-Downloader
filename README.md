@@ -4,7 +4,7 @@ This simple script allows anyone to download video and audio files from Instagra
 
 ## Update
 
-I know create an extension to simplify the injection of the script.
+I know created an extension to simplify the injection of the script.
 
 For more information visit [this link](https://github.com/matteobergantin/Instagram-Video-Downloader-Extension)
 
